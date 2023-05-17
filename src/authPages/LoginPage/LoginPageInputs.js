@@ -3,7 +3,7 @@ import React from 'react'
 import InputWithLabel from '../../shared/components/InputWithLabel'
 
 function LoginPageInput(props) {
-    const { email, setEmail, passWord, setPassWord } = props;
+    const { email, setEmail, password, setPassWord } = props;
     return (
         <>
             <InputWithLabel
@@ -14,7 +14,7 @@ function LoginPageInput(props) {
                 placeholder='E-mail...'
             />
             <InputWithLabel
-                value={passWord}
+                value={password}
                 setValue={setPassWord}
                 label='password'
                 type='password'

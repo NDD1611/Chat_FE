@@ -1,5 +1,4 @@
 
-
 import CustomPrimaryButton from "../../shared/components/CustomPrimaryButton";
 import RedirectInfo from "../../shared/components/RedirectInfo";
 import { useNavigate } from "react-router-dom"
@@ -7,18 +6,18 @@ import { Tooltip } from "@mui/material";
 
 
 const getFormNotValidMessage = () => {
-    return "Enter correct e-mail address and password should contain between 6 and 12 characters"
+    return "usename should contains between 3 and 12  characters and Enter correct e-mail address and password should contain between 6 and 12 characters"
 }
 
 const getFormValidMessage = () => {
-    return "Press to log in!"
+    return "Press to register!"
 }
 
-function LoginPageFooter({ handleLogin, isFormValid }) {
+function RegisterPageFooter({ handleRegister, isFormValid }) {
     const navigate = useNavigate()
 
-    const handlePushToRegisterPage = () => {
-        navigate('/register')
+    const handlePushToLoginPage = () => {
+        navigate('/login')
     }
     return (
         <>
@@ -26,22 +25,22 @@ function LoginPageFooter({ handleLogin, isFormValid }) {
                 <Tooltip title={!isFormValid ? getFormNotValidMessage() : getFormValidMessage()}>
                     <div>
                         <CustomPrimaryButton
-                            label='Log in '
+                            label='Register'
                             additionalStyles={{ marginTop: '30px' }}
                             disabled={!isFormValid}
-                            onClick={handleLogin}
+                            onClick={handleRegister}
                         />
                     </div>
                 </Tooltip>
                 <RedirectInfo
-                    text='Need an account?'
-                    redirectText="Create an account"
+                    text=''
+                    redirectText="Already have a account?"
                     additionalStyles={{ marginTop: "10px" }}
-                    redirectHandler={handlePushToRegisterPage}
+                    redirectHandler={handlePushToLoginPage}
                 />
             </div>
         </>
     )
 }
 
-export default LoginPageFooter;
+export default RegisterPageFooter;
