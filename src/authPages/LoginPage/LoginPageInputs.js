@@ -3,11 +3,11 @@ import React from 'react'
 import InputWithLabel from '../../shared/components/InputWithLabel'
 
 function LoginPageInput(props) {
-    const { email, setEmail, password, setPassWord } = props;
+    const { mail, setEmail, password, setPassWord } = props;
     return (
         <>
             <InputWithLabel
-                value={email}
+                value={mail}
                 setValue={setEmail}
                 label='E-mail'
                 type='text'

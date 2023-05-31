@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import RegisterPage from './authPages/RegisterPage/RegisterPage';
 import LoginPage from './authPages/LoginPage/LoginPage';
 import DashBoard from './DashBoard/DashBoard';
+import AlertNotification from './shared/components/AlertNotification'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/' element={<Navigate to='/dashboard' replace={true} />} />
         </Routes>
+        <AlertNotification></AlertNotification>
       </BrowserRouter>
     </>
   );

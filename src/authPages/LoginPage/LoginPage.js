@@ -5,25 +5,34 @@ import LoginPageHeader from "./LoginPageHeader";
 import LoginPageInput from "./LoginPageInputs";
 import LoginPageFooter from './LoginPageFooter';
 import { validateLoginForm } from '../../shared/utils/validators'
+import { connect } from 'react-redux'
+import { getActions } from '../../store/actions/authActions';
+import { useNavigate } from "react-router-dom"
 
-function LoginPage() {
-    const [email, setEmail] = useState('')
+function LoginPage({ login }) {//login from mapActionsToProps
+    const [mail, setEmail] = useState('')
     const [password, setPassWord] = useState('')
     const [isFormValid, setIsFormValid] = useState(false)
 
     useEffect(() => {
-        setIsFormValid(validateLoginForm({ email, password }))
-    }, [email, password, setIsFormValid])
+        setIsFormValid(validateLoginForm({ mail, password }))
+    }, [mail, password, setIsFormValid])
+
+    const navigate = useNavigate()
 
     const handleLogin = () => {
-        console.log(email, password)
+        const userDetails = {
+            mail,
+            password
+        }
+        login(userDetails, navigate)
     }
     return (
         <>
             <AuthBox>
                 <LoginPageHeader />
                 <LoginPageInput
-                    email={email}
+                    mail={mail}
                     setEmail={setEmail}
                     password={password}
                     setPassWord={setPassWord}
@@ -34,4 +43,10 @@ function LoginPage() {
     )
 }
 
-export default LoginPage;
+const mapActionsToProps = (dispatch) => {
+    return {
+        ...getActions(dispatch),
+    }
+}
+
+export default connect(null, mapActionsToProps)(LoginPage);

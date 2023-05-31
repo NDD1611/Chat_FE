@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
+/discord-frontend.code-workspace
+.gitignore
 
 # testing
 /coverage
